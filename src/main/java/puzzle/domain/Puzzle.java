@@ -2,6 +2,7 @@ package puzzle.domain;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Puzzle {
     private List<Integer> numbers;
@@ -19,5 +20,9 @@ public class Puzzle {
         int index2 = numbers.indexOf(Integer.valueOf(values.get(1)));
 
         Collections.swap(numbers, index1, index2);
+    }
+
+    public boolean isSorted() {
+        return IntStream.range(0, numbers.size()-1).allMatch(i -> numbers.get(i) < numbers.get(i + 1));
     }
 }
