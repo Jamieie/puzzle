@@ -1,6 +1,5 @@
 package puzzle.view;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -11,11 +10,9 @@ public class InputView {
         System.out.println("교환할 두 숫자를 입력>");
         String input = readLine();
 
-        if (hasSpaceAtStart(input) || !isTwoValues(input)) {
-            throw new IllegalArgumentException();
-        }
+        validate(input);
 
-        List<Integer> inputNumbers = new ArrayList<>();
+        List<Integer> inputNumbers;
         try {
             inputNumbers = toIntegers(input);
         } catch (NumberFormatException e) {
@@ -33,6 +30,12 @@ public class InputView {
         return Arrays.stream(input.trim().split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    private void validate(String input) {
+        if (hasSpaceAtStart(input) || !isTwoValues(input)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private boolean hasSpaceAtStart(String input) {
