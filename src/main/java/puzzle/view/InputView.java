@@ -11,7 +11,7 @@ public class InputView {
         System.out.println("교환할 두 숫자를 입력>");
         String input = readLine();
 
-        if (hasSpaceAtStart(input)) {
+        if (hasSpaceAtStart(input) || !isTwoValues(input)) {
             throw new IllegalArgumentException();
         }
 
@@ -38,5 +38,9 @@ public class InputView {
     private boolean hasSpaceAtStart(String input) {
         String[] split = input.split("");
         return split[0] == " ";
+    }
+
+    private boolean isTwoValues(String input) {
+        return input.split(",").length == 2;
     }
 }
