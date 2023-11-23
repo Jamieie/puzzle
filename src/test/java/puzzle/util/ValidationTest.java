@@ -2,6 +2,7 @@ package puzzle.util;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -27,4 +28,11 @@ class ValidationTest {
         assertThat(validation.isInRange(values)).isEqualTo(expected);
     }
 
+    @DisplayName("리스트 안에 숫자가 중복되는 수가 있는지 확인하는 기능")
+    @CsvSource({"1,1,true", "2,8,false"})
+    @ParameterizedTest
+    void hasDuplicate(int value1, int value2, boolean expected) {
+        List<Integer> values = Arrays.asList(value1, value2);
+        assertThat(validation.hasDuplicate(values)).isEqualTo(expected);
+    }
 }

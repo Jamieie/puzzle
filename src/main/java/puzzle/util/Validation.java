@@ -14,4 +14,8 @@ public class Validation {
         }
         return true;
     }
+
+    public boolean hasDuplicate(List<Integer> values) {
+        return values.size() != values.stream().distinct().count();
+    }
 }
