@@ -2,6 +2,7 @@ package puzzle.util;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -48,5 +49,17 @@ class ValidationTest {
     @ParameterizedTest
     void hasOneComma_moreOrNone_false(String input) {
         assertThat(validation.hasOneComma(input)).isFalse();
+    }
+
+    @DisplayName("입력값이 공백으로 시작하는지 확인하는 기능")
+    @Test
+    void hasSpaceAtStart_withSpace() {
+        assertThat(validation.hasSpaceAtStart(" 1,2")).isTrue();
+    }
+
+    @DisplayName("입력값이 공백으로 시작하는지 확인하는 기능")
+    @Test
+    void hasSpaceAtStart_noSpace() {
+        assertThat(validation.hasSpaceAtStart("1,2")).isFalse();
     }
 }

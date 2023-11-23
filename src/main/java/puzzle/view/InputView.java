@@ -1,5 +1,7 @@
 package puzzle.view;
 
+import puzzle.util.Validation;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -33,17 +35,9 @@ public class InputView {
     }
 
     private void validate(String input) {
-        if (hasSpaceAtStart(input) || !isTwoValues(input)) {
+        Validation validation = new Validation();
+        if (validation.hasSpaceAtStart(input) || !validation.hasOneComma(input)) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private boolean hasSpaceAtStart(String input) {
-        String[] split = input.split("");
-        return split[0] == " ";
-    }
-
-    private boolean isTwoValues(String input) {
-        return input.split(",").length == 2;
     }
 }

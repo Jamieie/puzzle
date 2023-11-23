@@ -24,4 +24,9 @@ public class Validation {
         String[] split = input.split("");
         return Arrays.stream(split).filter(s -> s.equals(",")).count() == 1;
     }
+
+    public boolean hasSpaceAtStart(String input) {
+        String[] split = input.split("");
+        return split[0].equals(" ");
+    }
 }
