@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class InputView {
-    public List<Integer> askNumbers() {
+    public List<Integer> readInput() {
         System.out.println("교환할 두 숫자를 입력>");
         String input = readLine();
 
