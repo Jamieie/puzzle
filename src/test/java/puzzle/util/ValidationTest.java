@@ -2,9 +2,9 @@ package puzzle.util;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,5 +34,19 @@ class ValidationTest {
     void hasDuplicate(int value1, int value2, boolean expected) {
         List<Integer> values = Arrays.asList(value1, value2);
         assertThat(validation.hasDuplicate(values)).isEqualTo(expected);
+    }
+
+    @DisplayName("입력값에 컴마(,)가 하나만 있으면 true 반환")
+    @ValueSource(strings = {"1,4", "1, 4", "1,4 ", "1, 4 "})
+    @ParameterizedTest
+    void hasOneComma_true(String input) {
+        assertThat(validation.hasOneComma(input)).isTrue();
+    }
+
+    @DisplayName("입력값에 컴마(,)가 하나 초과 혹은 없으면 false 반환")
+    @ValueSource(strings = {"1,,4", "1,4,", "14", ",,"})
+    @ParameterizedTest
+    void hasOneComma_moreOrNone_false(String input) {
+        assertThat(validation.hasOneComma(input)).isFalse();
     }
 }

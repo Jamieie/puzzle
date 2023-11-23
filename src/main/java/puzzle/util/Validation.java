@@ -1,5 +1,6 @@
 package puzzle.util;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Validation {
@@ -17,5 +18,10 @@ public class Validation {
 
     public boolean hasDuplicate(List<Integer> values) {
         return values.size() != values.stream().distinct().count();
+    }
+
+    public boolean hasOneComma(String input) {
+        String[] split = input.split("");
+        return Arrays.stream(split).filter(s -> s.equals(",")).count() == 1;
     }
 }
