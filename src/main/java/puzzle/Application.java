@@ -17,15 +17,18 @@ public class Application {
         List<Integer> numbers = generator.createNumbers();
         Puzzle puzzle = new Puzzle(numbers);
 
-        int turn = 0;
+        int turn = 1;
+        outputView.printResult(turn, puzzle.getNumbers());
+
         boolean result = false;
         while (!result) {
-            turn++;
-            outputView.printResult(turn, puzzle.getNumbers());
-
             List<Integer> input = askNumber();
             puzzle.swap(input);
+
+            turn++;
+            outputView.printResult(turn, puzzle.getNumbers());
             result = puzzle.isSorted();
+            System.out.println();
         }
         outputView.printSuccess(turn);
     }
@@ -39,9 +42,12 @@ public class Application {
                 validateNumbers(input);
                 break;
             } catch (IllegalArgumentException e) {
+                System.out.println();
                 System.out.println(e.getMessage());
+                System.out.println();
             }
         }
+        System.out.println();
         return input;
     }
 
