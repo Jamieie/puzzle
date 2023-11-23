@@ -18,7 +18,7 @@ public class InputView {
         try {
             inputNumbers = toIntegers(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못 입력하셨습니다. 다시 입력해 주세요.");
         }
         return inputNumbers;
     }
@@ -37,7 +37,7 @@ public class InputView {
     private void validate(String input) {
         Validation validation = new Validation();
         if (validation.hasSpaceAtStart(input) || !validation.hasOneComma(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못 입력하셨습니다. 다시 입력해 주세요.");
         }
     }
 }
