@@ -51,6 +51,14 @@ class ValidationTest {
         assertThat(validation.hasOneComma(input)).isFalse();
     }
 
+    @DisplayName("컴마 구분으로 두 개의 값을 입력했는지 확인")
+    @ValueSource(strings = {"1,", ",", "1,,4", "14"})
+    @ParameterizedTest
+    void hasTwoNumbers(String input) {
+        assertThat(validation.hasTwoNumbers(input)).isFalse();
+    }
+
+
     @DisplayName("입력값이 공백으로 시작하는지 확인하는 기능")
     @Test
     void hasSpaceAtStart_withSpace() {

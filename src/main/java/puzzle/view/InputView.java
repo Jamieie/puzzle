@@ -36,7 +36,11 @@ public class InputView {
 
     private void validate(String input) {
         Validation validation = new Validation();
-        if (validation.hasSpaceAtStart(input) || !validation.hasOneComma(input)) {
+        boolean hasSpaceAtStart = validation.hasSpaceAtStart(input);
+        boolean hasOneComma = validation.hasOneComma(input);
+        boolean hasTwoNumbers = validation.hasTwoNumbers(input);
+
+        if (hasSpaceAtStart || !hasOneComma || !hasTwoNumbers) {
             throw new IllegalArgumentException("잘못 입력하셨습니다. 다시 입력해 주세요.");
         }
     }
