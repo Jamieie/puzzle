@@ -30,7 +30,7 @@ public class InputView {
 
     private List<Integer> toIntegers(String input) {
         return Arrays.stream(input.trim().split(","))
-                .map(Integer::parseInt)
+                .map(i -> Integer.parseInt(i.trim()))
                 .collect(Collectors.toList());
     }
 
