@@ -20,14 +20,14 @@ public class Application {
         int turn = 1;
         outputView.printResult(turn, puzzle.getNumbers());
 
-        boolean result = false;
-        while (!result) {
+        boolean isSorted = false;
+        while (!isSorted) {
             List<Integer> input = askNumber();
             puzzle.swap(input);
 
             turn++;
             outputView.printResult(turn, puzzle.getNumbers());
-            result = puzzle.isSorted();
+            isSorted = puzzle.isSorted();
             System.out.println();
         }
         outputView.printSuccess(turn);
