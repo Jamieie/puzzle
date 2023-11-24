@@ -14,13 +14,7 @@ public class InputView {
 
         validate(input);
 
-        List<Integer> inputNumbers;
-        try {
-            inputNumbers = toIntegers(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못 입력하셨습니다. 다시 입력해 주세요.");
-        }
-        return inputNumbers;
+        return toIntegers(input);
     }
 
     private String readLine() {
@@ -29,9 +23,15 @@ public class InputView {
     }
 
     private List<Integer> toIntegers(String input) {
-        return Arrays.stream(input.trim().split(","))
-                .map(i -> Integer.parseInt(i.trim()))
-                .collect(Collectors.toList());
+        List<Integer> inputNumbers;
+        try {
+            inputNumbers = Arrays.stream(input.trim().split(","))
+                    .map(i -> Integer.parseInt(i.trim()))
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못 입력하셨습니다. 다시 입력해 주세요.");
+        }
+        return inputNumbers;
     }
 
     private void validate(String input) {
