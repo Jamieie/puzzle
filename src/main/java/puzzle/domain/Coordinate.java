@@ -43,4 +43,8 @@ public class Coordinate {
         coordinates.add(coordinate);
         return coordinates;
     }
+
+    public boolean isSameAs(Coordinate coordinate) {
+        return coordinate.getX() == x && coordinate.getY() == y;
+    }
 }

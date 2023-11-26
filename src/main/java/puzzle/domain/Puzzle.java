@@ -45,7 +45,7 @@ public class Puzzle {
         Coordinate vacancy = findVacancy();
         List<Coordinate> nearCoordinates = position.findNearCoordinates();
         for (Coordinate coordinate : nearCoordinates) {
-            if (coordinate.getX() == vacancy.getX() && coordinate.getY() == vacancy.getY()) {
+            if (coordinate.isSameAs(vacancy)) {
                 return true;
             }
         }
