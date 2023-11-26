@@ -1,12 +1,33 @@
 package puzzle;
 
+import puzzle.domain.NumberGenerator;
 import puzzle.domain.Puzzle;
 import puzzle.util.Validation;
 import puzzle.view.InputView;
+import puzzle.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
+        NumberGenerator generator = new NumberGenerator();
+        Puzzle puzzle = new Puzzle(generator.createLists());
 
+        OutputView outputView = new OutputView();
+        outputView.printTitle();
+
+        int turn = 1;
+        outputView.printTurn(turn);
+        outputView.printPuzzle(puzzle);
+
+        boolean sorted = false;
+        while (!sorted) {
+            int number = askNumber(puzzle);
+            puzzle.move(number);
+            sorted = puzzle.isSorted();
+            outputView.printTurn(turn);
+            outputView.printPuzzle(puzzle);
+            turn++;
+        }
+        outputView.printSuccess(turn);
     }
 
     private static int askNumber(Puzzle puzzle) {
