@@ -15,17 +15,15 @@ public class Application {
         outputView.printTitle();
 
         int turn = 1;
-        outputView.printTurn(turn);
-        outputView.printPuzzle(puzzle);
+        outputView.printPuzzle(turn, puzzle);
 
         boolean sorted = false;
         while (!sorted) {
+            turn++;
             int number = askNumber(puzzle);
             puzzle.move(number);
             sorted = puzzle.isSorted();
-            outputView.printTurn(turn);
-            outputView.printPuzzle(puzzle);
-            turn++;
+            outputView.printPuzzle(turn, puzzle);
         }
         outputView.printSuccess(turn);
     }
@@ -51,7 +49,7 @@ public class Application {
         Validation validation = new Validation();
         boolean inRange = validation.isInRange(input);
         boolean vacancyNear = puzzle.hasVacancyNear(input);
-        if (!inRange && !vacancyNear) {
+        if (!inRange || !vacancyNear) {
             throw new IllegalArgumentException("잘못 입력하셨습니다. 다시 입력해 주세요.");
         }
     }
