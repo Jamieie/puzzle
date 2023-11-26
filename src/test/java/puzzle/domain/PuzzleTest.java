@@ -31,4 +31,12 @@ class PuzzleTest {
         assertThat(numbers.get(row)).contains(16);
     }
 
+    @DisplayName("특정값 주변에 빈자리가 있는지 확인하는 기능")
+    @CsvSource({"7,true", "10,true", "12,true", "15,true", "6,false", "8,false", "14,false", "11,false", "3,false"})
+    @ParameterizedTest
+    void hasVacancyNear(int value, boolean expected) {
+        puzzle = new Puzzle(numbers);
+        boolean result = puzzle.hasVacancyNear(value);
+        assertThat(result).isEqualTo(expected);
+    }
 }

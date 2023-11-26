@@ -39,4 +39,16 @@ public class Puzzle {
     private Coordinate findVacancy() {
         return findPosition(VACANCY_NUMBER);
     }
+
+    public boolean hasVacancyNear(int value) {
+        Coordinate position = findPosition(value);
+        Coordinate vacancy = findVacancy();
+        List<Coordinate> nearCoordinates = position.findNearCoordinates();
+        for (Coordinate coordinate : nearCoordinates) {
+            if (coordinate.getX() == vacancy.getX() && coordinate.getY() == vacancy.getY()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
