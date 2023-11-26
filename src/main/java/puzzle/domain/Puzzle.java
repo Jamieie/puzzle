@@ -11,6 +11,19 @@ public class Puzzle {
         this.numbers = numbers;
     }
 
+    public void move(int value) {
+        Coordinate valuePosition = findPosition(value);
+        Coordinate vacancyPosition = findVacancy();
+
+        List<Integer> valueRow = numbers.get(valuePosition.getY());
+        List<Integer> vacancyRow = numbers.get(vacancyPosition.getY());
+
+        valueRow.remove(Integer.valueOf(value));
+        vacancyRow.add(vacancyPosition.getX(), value);
+        vacancyRow.remove(Integer.valueOf(VACANCY_NUMBER));
+        valueRow.add(valuePosition.getX(), VACANCY_NUMBER);
+    }
+
     private Coordinate findPosition(int value) {
         Coordinate coordinate = new Coordinate();
         for (int i = 0; i < numbers.size(); i++) {
