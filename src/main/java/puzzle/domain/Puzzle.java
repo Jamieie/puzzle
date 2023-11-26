@@ -30,8 +30,7 @@ public class Puzzle {
             List<Integer> row = numbers.get(i);
             int index = row.indexOf(value);
             if (index != -1) {
-                coordinate.setY(i);
-                coordinate.setX(index);
+                coordinate.setXY(index, i);
             }
         }
         return coordinate;
