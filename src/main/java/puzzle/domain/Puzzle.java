@@ -7,12 +7,16 @@ import java.util.stream.IntStream;
 public class Puzzle {
     private final int VACANCY_NUMBER = 16;
     private final int FIRST_INDEX = 0;
-    private final int LAST_INDEX = 0;
+    private final int LAST_INDEX = 3;
 
     private Map<Integer, List<Integer>> numbers;
 
     public Puzzle(Map<Integer, List<Integer>> numbers) {
         this.numbers = numbers;
+    }
+
+    public Map<Integer, List<Integer>> getNumbers() {
+        return numbers;
     }
 
     public void move(int value) {
