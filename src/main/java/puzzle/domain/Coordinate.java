@@ -23,25 +23,24 @@ public class Coordinate {
     public List<Coordinate> findNearCoordinates() {
         List<Coordinate> coordinates = new ArrayList<>();
         if (y > 0) {
-            Coordinate coordinate = new Coordinate();
-            coordinate.setXY(x, y-1);
-            coordinates.add(coordinate);
+            coordinates = addCoordinates(coordinates, x, y - 1);
         }
         if (y < 3) {
-            Coordinate coordinate = new Coordinate();
-            coordinate.setXY(x, y+1);
-            coordinates.add(coordinate);
+            coordinates = addCoordinates(coordinates, x, y + 1);
         }
         if (x > 0) {
-            Coordinate coordinate = new Coordinate();
-            coordinate.setXY(x-1, y);
-            coordinates.add(coordinate);
+            coordinates = addCoordinates(coordinates, x - 1, y);
         }
         if (x < 3) {
-            Coordinate coordinate = new Coordinate();
-            coordinate.setXY(x+1, y);
-            coordinates.add(coordinate);
+            coordinates = addCoordinates(coordinates, x + 1, y);
         }
+        return coordinates;
+    }
+
+    private List<Coordinate> addCoordinates(List<Coordinate> coordinates, int x, int y) {
+        Coordinate coordinate = new Coordinate();
+        coordinate.setXY(x, y);
+        coordinates.add(coordinate);
         return coordinates;
     }
 }
