@@ -10,11 +10,9 @@ public class OutputView {
         System.out.println("재미있는 15 퍼즐!");
     }
 
-    public void printTurn(int turn) {
+    public void printPuzzle(int turn, Puzzle puzzle) {
+        System.out.println();
         System.out.println("Turn " + turn);
-    }
-
-    public void printPuzzle(Puzzle puzzle) {
         Map<Integer, List<Integer>> numbers = puzzle.getNumbers();
         for (int i = 0; i < numbers.size(); i++) {
             printRow(numbers.get(i));
@@ -37,6 +35,7 @@ public class OutputView {
     }
 
     public void printSuccess(int turn) {
+        System.out.println();
         System.out.println("축하합니다! " + turn + "턴만에 퍼즐을 완성했습니다!");
     }
 }
