@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputView {
+    private final int DOUBLE_DIGIT = 10;
+    private final int VACANCY_NUMBER = 16;
+
     public void printTitle() {
         System.out.println("재미있는 15 퍼즐!");
     }
@@ -21,13 +24,13 @@ public class OutputView {
 
     private void printRow(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (number < 10){
+            if (number < DOUBLE_DIGIT){
                 System.out.print("[ " + number + "]");
             }
-            if (number >= 10 && number < 16) {
+            if (number >= DOUBLE_DIGIT && number < VACANCY_NUMBER) {
                 System.out.print("[" + number + "]");
             }
-            if (number == 16) {
+            if (number == VACANCY_NUMBER) {
                 System.out.print("[  ]");
             }
         }

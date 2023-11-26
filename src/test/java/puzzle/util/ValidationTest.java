@@ -1,6 +1,5 @@
 package puzzle.util;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -23,5 +22,4 @@ class ValidationTest {
         boolean result = validation.isInRange(input);
         assertThat(result).isEqualTo(expected);
     }
-
 }
