@@ -21,8 +21,19 @@ class CoordinateTest {
     @CsvSource({"0,0,2", "0,1,3", "0,3,2", "1,0,3", "1,1,4", "3,0,2", "3,2,3", "3,3,2", "2,3,3"})
     @ParameterizedTest
     void findNearCoordinates(int y, int x, int expected) {
-        coordinate.setXY(x,y);
+        coordinate.setXY(x, y);
         List<Coordinate> nearCoordinates = coordinate.findNearCoordinates();
         assertThat(nearCoordinates.size()).isEqualTo(expected);
+    }
+
+    @DisplayName(("해당 좌표가 특정 좌표와 인접해 있는지 확인하는 기능"))
+    @CsvSource({"0,1,true", "2,1,true", "1,0,true", "1,2,true", "0,0,false", "0,2,false", "2,0,false", "2,2,false"})
+    @ParameterizedTest
+    void isNear(int x, int y, boolean expected) {
+        coordinate.setXY(1,1);
+        Coordinate coordinate1 = new Coordinate();
+        coordinate1.setXY(x, y);
+        boolean result = coordinate.isNear(coordinate1);
+        assertThat(result).isEqualTo(expected);
     }
 }

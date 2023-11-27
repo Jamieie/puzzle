@@ -20,6 +20,16 @@ public class Coordinate {
         this.y = y;
     }
 
+    public boolean isNear(Coordinate coordinate) {
+        List<Coordinate> nears = coordinate.findNearCoordinates();
+        for (Coordinate near : nears) {
+            if (near.getX() == x && near.getY() == y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public List<Coordinate> findNearCoordinates() {
         List<Coordinate> coordinates = new ArrayList<>();
         if (y > 0) {
