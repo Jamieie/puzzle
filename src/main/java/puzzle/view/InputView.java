@@ -9,8 +9,9 @@ public class InputView {
         Scanner scanner = new Scanner(System.in);
         int input = 0;
         try {
-            input = scanner.nextInt();
-        } catch (InputMismatchException e) {
+            String inputString = scanner.nextLine();
+            input = Integer.parseInt(inputString.trim());
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("잘못 입력하셨습니다. 다시 입력해 주세요.");
         }
         return input;
