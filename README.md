@@ -52,29 +52,34 @@
 
 ### 퍼즐 배열 생성하는 코드
 
-    private void createNumbers() {
-        allNumbers = new ArrayList<>();
+    public Map<Integer, List<Integer>> createNumbers() {
+        List<Integer> shuffled = shuffleNumbers();
+        
+        // 숫자 배열 Map으로 반환
+        Map<Integer, List<Integer>> numbers = new HashMap<>();
+        for (int i = 0; i < PUZZLE_SIDE_LENGTH; i++) {
+            List<Integer> rowNumbers = new ArrayList<>();
+            for (int j = 0; j < PUZZLE_SIDE_LENGTH; j++) {
+                
+                // 랜덤하게 섞인 숫자 리스트에서 제일 앞에 위치한 값을 빼서 퍼즐 배열에 담기
+                rowNumbers.add(shuffled.get(0));
+
+                // 배열에 담은 후 담긴 값은 리스트에서 삭제
+                shuffled.remove(0);
+            }
+            numbers.put(i, rowNumbers);
+        }
+        return numbers;
+    }
+
+    // 1~16의 숫자를 생성하여 순서를 랜덤하게 섞어 리스트 반환
+    private List<Integer> shuffleNumbers() {
+        List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < PUZZLE_SIZE; i++) {
-            allNumbers.add(i+1);                // 1~16 숫자 생성
+            numbers.add(i+1);
         }
-        Collections.shuffle(allNumbers);        // 순서 랜덤하게 섞기
-    }
-
-    public Map<Integer, List<Integer>> createLists() {   // 4개의 열 생성하여 map으로 반환
-        Map<Integer, List<Integer>> lists = new HashMap<>();
-        for (int i = 0; i < MAP_SIZE; i++) {
-            lists.put(i, createList());
-        }
-        return lists;
-    }
-
-    private List<Integer> createList() {        // 한 열(4개의 숫자 list) 생성
-        List<Integer> rowNumbers = new ArrayList<>();
-        for (int i = 0; i < LIST_SIZE; i++) {
-            rowNumbers.add(allNumbers.get(0));  // 셔플한 숫자 배열에서 앞에 있는 숫자 꺼내서 퍼즐에 담기
-            allNumbers.remove(0);               // 퍼즐에 담은 숫자 배열에서 삭제
-        }
-        return rowNumbers;
+        Collections.shuffle(numbers);
+        return numbers;
     }
     
 

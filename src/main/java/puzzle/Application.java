@@ -9,7 +9,7 @@ import puzzle.view.OutputView;
 public class Application {
     public static void main(String[] args) {
         NumberGenerator generator = new NumberGenerator();
-        Puzzle puzzle = new Puzzle(generator.createLists());
+        Puzzle puzzle = new Puzzle(generator.createNumbers());
 
         OutputView outputView = new OutputView();
         outputView.printTitle();

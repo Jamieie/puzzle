@@ -20,7 +20,7 @@ class NumberGeneratorTest {
     @DisplayName("네 개의 숫자 리스트를 가진 map 생성")
     @Test
     void createRows() {
-        Map<Integer, List<Integer>> lists = generator.createLists();
+        Map<Integer, List<Integer>> lists = generator.createNumbers();
         Assertions.assertThat(lists.size()).isEqualTo(4);
     }
 }

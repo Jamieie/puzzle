@@ -4,36 +4,28 @@ import java.util.*;
 
 public class NumberGenerator {
     private final int PUZZLE_SIZE = 16;
-    private final int LIST_SIZE = 4;
-    private final int MAP_SIZE = 4;
-    private List<Integer> allNumbers;
+    private final int PUZZLE_SIDE_LENGTH = 4;
 
-    public NumberGenerator() {
-        createNumbers();
+    public Map<Integer, List<Integer>> createNumbers() {
+        List<Integer> shuffled = shuffleNumbers();
+        Map<Integer, List<Integer>> numbers = new HashMap<>();
+        for (int i = 0; i < PUZZLE_SIDE_LENGTH; i++) {
+            List<Integer> rowNumbers = new ArrayList<>();
+            for (int j = 0; j < PUZZLE_SIDE_LENGTH; j++) {
+                rowNumbers.add(shuffled.get(0));
+                shuffled.remove(0);
+            }
+            numbers.put(i, rowNumbers);
+        }
+        return numbers;
     }
 
-    private void createNumbers() {
-        allNumbers = new ArrayList<>();
+    private List<Integer> shuffleNumbers() {
+        List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < PUZZLE_SIZE; i++) {
-            allNumbers.add(i+1);
+            numbers.add(i+1);
         }
-        Collections.shuffle(allNumbers);
-    }
-
-    public Map<Integer, List<Integer>> createLists() {
-        Map<Integer, List<Integer>> lists = new HashMap<>();
-        for (int i = 0; i < MAP_SIZE; i++) {
-            lists.put(i, createList());
-        }
-        return lists;
-    }
-
-    private List<Integer> createList() {
-        List<Integer> rowNumbers = new ArrayList<>();
-        for (int i = 0; i < LIST_SIZE; i++) {
-            rowNumbers.add(allNumbers.get(0));
-            allNumbers.remove(0);
-        }
-        return rowNumbers;
+        Collections.shuffle(numbers);
+        return numbers;
     }
 }
