@@ -51,7 +51,7 @@ class PuzzleTest {
     @ParameterizedTest
     void hasVacancyNear(int value, boolean expected) {
         puzzle = new Puzzle(NUMBERS_UNSORTED_1);
-        boolean result = puzzle.hasVacancyNear(value);
+        boolean result = puzzle.isNearVacancy(value);
         assertThat(result).isEqualTo(expected);
     }
 

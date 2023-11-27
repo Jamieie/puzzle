@@ -48,7 +48,7 @@ public class Application {
     private static void validate(Puzzle puzzle, int input) {
         Validation validation = new Validation();
         boolean inRange = validation.isInRange(input);
-        boolean vacancyNear = puzzle.hasVacancyNear(input);
+        boolean vacancyNear = puzzle.isNearVacancy(input);
         if (!inRange || !vacancyNear) {
             throw new IllegalArgumentException("잘못 입력하셨습니다. 다시 입력해 주세요.");
         }

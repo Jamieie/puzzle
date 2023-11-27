@@ -48,7 +48,7 @@ public class Puzzle {
         return findPosition(VACANCY_NUMBER);
     }
 
-    public boolean hasVacancyNear(int value) {
+    public boolean isNearVacancy(int value) {
         Coordinate position = findPosition(value);
         Coordinate vacancy = findVacancy();
         return position.isNear(vacancy);
