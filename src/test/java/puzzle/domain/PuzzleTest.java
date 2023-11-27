@@ -16,24 +16,24 @@ class PuzzleTest {
     private Puzzle puzzle;
 
     private final Map<Integer, List<Integer>> NUMBERS_SORTED = Map.of(
-            0, new ArrayList<>(Arrays.asList(1,2,3,4)),
-            1, new ArrayList<>(Arrays.asList(5,6,7,8)),
-            2, new ArrayList<>(Arrays.asList(9,10,11,12)),
-            3, new ArrayList<>(Arrays.asList(13,14,15,16))
+            0, new ArrayList<>(Arrays.asList(1, 2, 3, 4)),
+            1, new ArrayList<>(Arrays.asList(5, 6, 7, 8)),
+            2, new ArrayList<>(Arrays.asList(9, 10, 11, 12)),
+            3, new ArrayList<>(Arrays.asList(13, 14, 15, 16))
     );
 
     private final Map<Integer, List<Integer>> NUMBERS_UNSORTED_1 = Map.of(
-            0, new ArrayList<>(Arrays.asList(1,2,3,4)),
-            1, new ArrayList<>(Arrays.asList(5,6,7,8)),
-            2, new ArrayList<>(Arrays.asList(9,10,16,12)),
-            3, new ArrayList<>(Arrays.asList(13,14,15,11))
+            0, new ArrayList<>(Arrays.asList(1, 2, 3, 4)),
+            1, new ArrayList<>(Arrays.asList(5, 6, 7, 8)),
+            2, new ArrayList<>(Arrays.asList(9, 10, 16, 12)),
+            3, new ArrayList<>(Arrays.asList(13, 14, 15, 11))
     );
 
     private final Map<Integer, List<Integer>> NUMBERS_UNSORTED_2 = Map.of(
-            0, new ArrayList<>(Arrays.asList(1,2,3,4)),
-            1, new ArrayList<>(Arrays.asList(5,6,7,8)),
-            2, new ArrayList<>(Arrays.asList(13,14,15,16)),
-            3, new ArrayList<>(Arrays.asList(9,10,11,12))
+            0, new ArrayList<>(Arrays.asList(1, 2, 3, 4)),
+            1, new ArrayList<>(Arrays.asList(5, 6, 7, 8)),
+            2, new ArrayList<>(Arrays.asList(13, 14, 15, 16)),
+            3, new ArrayList<>(Arrays.asList(9, 10, 11, 12))
     );
 
     @DisplayName("특정 값을 빈자리로 옮기는 기능")

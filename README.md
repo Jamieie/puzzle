@@ -133,10 +133,11 @@ puzzle 내의 모든 `list`에 대해 `indexOf()`로 인덱스 탐색
 ### 퍼즐 오름차순 정렬 여부 확인하는 코드
 
     public boolean isSorted() {
-        // 모든 열이 오름차순으로 정렬되어 있는지 확인
+        // 각 열이 오름차순으로 정렬되어 있는지 확인
         for (int i = 0; i < numbers.size(); i++) {
             List<Integer> row = numbers.get(i);
-            if (!isSortedRow(row)) {
+            boolean isSortedList = IntStream.range(0, row.size() - 1).allMatch(j -> row.get(j) < row.get(j + 1));
+            if (!isSortedList) {
                 return false;
             }
         }
@@ -145,20 +146,12 @@ puzzle 내의 모든 `list`에 대해 `indexOf()`로 인덱스 탐색
             List<Integer> row = numbers.get(i);
             List<Integer> rowAfter = numbers.get(i + 1);
 
-            // 한 열의 마지막 숫자가 뒷열의 첫 번째 숫자보다 큰 경우 false 반환
-            if (!(row.get(LAST_INDEX) < rowAfter.get(FIRST_INDEX))) {
+            // 앞열의 마지막 숫자가 뒷열의 첫 번째 숫자보다 크면 false 리턴
+            if (row.get(LAST_INDEX) > rowAfter.get(FIRST_INDEX)) {
                 return false;
             }
         }
         return true;
-    }
-
-    private boolean isSortedRow(List<Integer> row) {
-        if (row == null || row.size() <= 1) {
-            return true;
-        }
-        // 리스트 내부 앞자리의 값 보다 뒷자리의 값이 더 큰지 여부 반환
-        return IntStream.range(0, row.size()-1).allMatch(i -> row.get(i) < row.get(i+1));
     }
 
 ### 값 입력 받고 유효하지 않은 값 입력 시 다시 입력 받는 코드

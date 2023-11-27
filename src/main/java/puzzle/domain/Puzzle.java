@@ -58,7 +58,8 @@ public class Puzzle {
         // 각 열이 오름차순으로 정렬되어 있는지 확인
         for (int i = 0; i < numbers.size(); i++) {
             List<Integer> row = numbers.get(i);
-            if (!isSortedRow(row)) {
+            boolean isSortedList = IntStream.range(0, row.size() - 1).allMatch(j -> row.get(j) < row.get(j + 1));
+            if (!isSortedList) {
                 return false;
             }
         }
@@ -66,17 +67,10 @@ public class Puzzle {
         for (int i = 0; i < numbers.size() - 1; i++) {
             List<Integer> row = numbers.get(i);
             List<Integer> rowAfter = numbers.get(i + 1);
-            if (!(row.get(LAST_INDEX) < rowAfter.get(FIRST_INDEX))) {
+            if (row.get(LAST_INDEX) > rowAfter.get(FIRST_INDEX)) {
                 return false;
             }
         }
         return true;
-    }
-
-    private boolean isSortedRow(List<Integer> row) {
-        if (row == null || row.size() <= 1) {
-            return true;
-        }
-        return IntStream.range(0, row.size()-1).allMatch(i -> row.get(i) < row.get(i+1));
     }
 }
