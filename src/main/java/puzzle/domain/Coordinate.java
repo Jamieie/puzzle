@@ -30,7 +30,7 @@ public class Coordinate {
         return false;
     }
 
-    public List<Coordinate> findNearCoordinates() {
+    private List<Coordinate> findNearCoordinates() {
         List<Coordinate> coordinates = new ArrayList<>();
         if (y > 0) {
             coordinates = addCoordinates(coordinates, x, y - 1);
@@ -52,9 +52,5 @@ public class Coordinate {
         coordinate.setXY(x, y);
         coordinates.add(coordinate);
         return coordinates;
-    }
-
-    public boolean isSameAs(Coordinate coordinate) {
-        return coordinate.getX() == x && coordinate.getY() == y;
     }
 }
