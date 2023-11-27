@@ -130,24 +130,6 @@ puzzle 내의 모든 `list`에 대해 `indexOf()`로 인덱스 탐색
 
 `list`에서 `indexOf()`로 특정 값의 인덱스 찾을 때, 값이 없으면 -1 반환하므로 -1이 아닐 경우 해당 열의 key 값과 인덱스를 좌표값으로 반환
 
-### 특정 값의 주변에 빈자리 있는지 확인하는 코드
-
-    public boolean hasVacancyNear(int value) {
-        Coordinate position = findPosition(value);
-        Coordinate vacancy = findVacancy();
-        // 특정 값의 좌표 리스트 구하기
-        List<Coordinate> nearCoordinates = position.findNearCoordinates();
-        // 좌표 리스트 내 좌표 중에서 빈자리 좌표와 같은 게 있으면 true 반환
-        for (Coordinate coordinate : nearCoordinates) {
-            if (coordinate.isSameAs(vacancy)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-특정 값의 주변 좌표 리스트 구해서 빈자리의 좌표와 동일한지 확인
-
 ### 퍼즐 오름차순 정렬 여부 확인하는 코드
 
     public boolean isSorted() {

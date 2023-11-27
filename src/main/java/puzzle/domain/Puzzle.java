@@ -51,13 +51,7 @@ public class Puzzle {
     public boolean hasVacancyNear(int value) {
         Coordinate position = findPosition(value);
         Coordinate vacancy = findVacancy();
-        List<Coordinate> nearCoordinates = position.findNearCoordinates();
-        for (Coordinate coordinate : nearCoordinates) {
-            if (coordinate.isSameAs(vacancy)) {
-                return true;
-            }
-        }
-        return false;
+        return position.isNear(vacancy);
     }
 
     public boolean isSorted() {
